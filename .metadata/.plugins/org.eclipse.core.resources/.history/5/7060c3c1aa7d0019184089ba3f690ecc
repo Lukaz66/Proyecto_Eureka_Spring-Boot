@@ -1,0 +1,32 @@
+package com.everis.eureka.Feign.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.everis.eureka.Feign.clients.RestClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@RestController
+public class HomeController {
+
+	final RestClient restClient;
+	
+	@Autowired
+	public HomeController(RestClient restClient) {
+		this.restClient = restClient;
+	}
+	
+	@GetMapping("/rest-version")
+	@HystrixCommand(fallbackMethod = "fallback_list")
+	public List<Object> getList() {
+		return restClient.getList();
+	}
+	
+	public String fallback_list() {
+		return "EN OTRO MOMENTO JOVEN XD";
+	}
+	
+}

@@ -1,0 +1,26 @@
+server.port=8081
+
+spring.jpa.database=POSTGRESQL
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost/family
+spring.datasource.username=postgres
+spring.datasource.password=123
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+
+server.ssl.key-alias=https-proyect
+server.ssl.key-store-type=JKS
+server.ssl.key-password=lapolbora66
+server.ssl.key-store=classpath:https-proyect.jks
+
+#######################################################################
+spring.application.name= rest-app
+eureka.client.service-url.defaultzone: http://localhost:8761/eureka
+eureka.instance.prefer-ip-address= true
+
+eureka.instance.non-secure-port-enabled=false
+eureka.instance.secure-port-enabled=true
+eureka.instance.status-page-url= 'https://localhost:${server.port}/info'
+eureka.instance.health-check-url=  'https://localhost:${server.port}/health'
+eureka.instance.home-page-url= 'https://localhost:${server.port}/'
